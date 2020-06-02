@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPos: {x: 0, y: 0, z: 0}
   NumberLevel: 4
-  PrefabCell: {fileID: 1091037569043477215, guid: fe6c34126d2049e48a5a52fd48e4f73a,
+  PrefabCell: {fileID: -1355940481847235355, guid: fe6c34126d2049e48a5a52fd48e4f73a,
     type: 3}
   ConfigLevel: {fileID: 11400000, guid: a5e25c289daeb8e4584a81ea81902f37, type: 2}
   _item: 0

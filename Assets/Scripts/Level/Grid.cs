@@ -26,36 +26,27 @@ namespace TestWork
         }
         protected override void InitField()
         {
-
             // Initialize all cells
-            for (int i = 0; i < LevelData.Row; ++i)
+            for (var i = 0; i < LevelData.Row; ++i)
             {
-                for (int j = 0; j < LevelData.Col; ++j)
+                for (var j = 0; j < LevelData.Col; ++j)
                 {
-                    var go = Instantiate(PrefabCell, transform).GetComponent<Cell>();
+                    var go = Instantiate(PrefabCell, transform);
                     go.transform.position = new Vector3(i, 0f, j);
                     Cells.Add(go);
                     go.NumberCell = Cells.Count - 1;
                 }
             }
-
             // Creating boxes
-            for (int i = 0; i < LevelData.Box.Count; ++i)
-            {
-                var numberCell = LevelData.Box[i];
-                CreateObj(numberCell, Items.Box, _prefabBox);
-            }
+            LevelData.Box.ForEach(t => CreateObj(t, Items.Box, _prefabBox));
 
             // Creating walls
-            for (int i = 0; i < LevelData.Wall.Count; ++i)
-            {
-                var numberCell = LevelData.Wall[i];
-                CreateObj(numberCell, Items.Wall, _prefabWall);
-            }
+            LevelData.Wall.ForEach(t => CreateObj(t, Items.Wall, _prefabWall));
 
             // Creating final point
             var finalPoint = Cells[LevelData.FinalPoint];
-            finalPoint.gameObject.AddComponent<FinishCell>().NumberCell = LevelData.FinalPoint;
+            finalPoint.gameObject.AddComponent<FinishCell>();
+            finalPoint.NumberCell = LevelData.FinalPoint;
         }
 
         private void CreateObj(int numberCell, Items Items, GameObject _prefab)

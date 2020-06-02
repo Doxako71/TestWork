@@ -32,24 +32,16 @@ namespace TestWork
             {
                 for (int j = 0; j < LevelData.Col; ++j)
                 {
-                    var go = Instantiate(PrefabCell, transform).GetComponent<CellConstructor>();
+                    var go = Instantiate(PrefabCell, transform);
                     go.transform.position = new Vector3(i, 0f, j);
                     Cells.Add(go);
                     go.NumberCell = Cells.Count - 1;
                 }
             }
 
-            for (int i = 0; i < LevelData.Box.Count; ++i)
-            {
-                var numberCell = LevelData.Box[i];
-                Cells[numberCell].GetComponent<MeshRenderer>().material = _box;
-            }
+            LevelData.Box.ForEach(t => Cells[t].GetComponent<MeshRenderer>().material = _box);
 
-            for (int i = 0; i < LevelData.Wall.Count; ++i)
-            {
-                var numberCell = LevelData.Wall[i];
-                Cells[numberCell].GetComponent<MeshRenderer>().material = _wall;
-            }
+            LevelData.Wall.ForEach(t => Cells[t].GetComponent<MeshRenderer>().material = _wall);
 
             Cells[LevelData.FinalPoint].GetComponent<MeshRenderer>().material = _point;
         }

@@ -25,7 +25,7 @@ namespace TestWork
         [SerializeField]
         protected string NumberLevel;
         [SerializeField]
-        protected GameObject PrefabCell;
+        protected BaseCell PrefabCell;
 
         /// <summary>
         /// Asset with levels data
